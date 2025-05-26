@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fullscreen Redirect</title>
+<style>
+  body, html {
+    margin: 0; padding: 0; height: 100%; overflow: hidden;
+    background: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+  }
+  #freeze {
+    display: none;
+    font-size: 2rem;
+  }
+</style>
+</head>
+<body>
+
+<button id="startBtn">Enter Fullscreen and Lock</button>
+
+<div id="freeze">
+  <p>Screen is frozen. Use Ctrl+Shift+X to exit.</p>
+</div>
+
+<script>
+// Prevent developer tools
+document.onkeydown = function(e) {
+  if (
+    e.keyCode === 123 || // F12
+    (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || // Ctrl+Shift+I or J
+    (e.ctrlKey && e.keyCode === 85) // Ctrl+U
+  ) {
+    e.preventDefault();
+    return false;
+  }
+};
+
+// Disable refresh/reload
+window.onbeforeunload = function() {
+  return "Fullscreen is locked. Use Ctrl+Shift+X to exit.";
+};
+
+// Prevent window resizing by forcing fullscreen size
+window.addEventListener('resize', function() {
+  window.resizeTo(screen.width, screen.height);
+});
+
+// Exit freeze on Ctrl+Shift+X
+document.addEventListener('keydown', function(e) {
+  if (e.ctrlKey && e.shiftKey && e.keyCode === 88) { // X key
+    document.exitFullscreen();
+    location.reload();
+  }
+});
+
+document.getElementById('startBtn').addEventListener('click', function() {
+  // Request fullscreen on the document element
+  if (document.documentElement.requestFullscreen) {
+    document.documentElement.requestFullscreen().then(() => {
+      // After fullscreen enabled, hide button and show freeze page
+      this.style.display = 'none';
+      document.getElementById('freeze').style.display = 'flex';
+      // Resize window to fullscreen (some browsers might block this)
+      window.resizeTo(screen.width, screen.height);
+    }).catch((err) => {
+      alert("Fullscreen failed: " + err.message);
+    });
+  } else {
+    alert("Fullscreen API is not supported by your browser.");
+  }
+});
+</script>
+
+</body>
+</html>
