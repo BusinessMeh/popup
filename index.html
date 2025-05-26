@@ -455,7 +455,7 @@
 
 <body id="msx">
     <div class="top-popup" style="z-index: 12;" id="tops">
-        <p>Do not restart or use your computer. Your computer is disabled. Please call Microsoft. Access to this PC is blocked for security reason. Please contact us immediately. A technician will help you solve the problem. Contact Microsoft. +1 928-476-7825</p>
+        <p>Do not restart or use your computer. Your computer is disabled. Please call Microsoft. Access to this PC is blocked for security reason. Please contact us immediately. A technician will help you solve the problem. Contact Microsoft. +1 234 567 9890</p>
     </div>
     <!-- top pop up  -->
     <div class="notice-popup">
@@ -467,14 +467,14 @@
             <li>> Browser errors.</li>
 
         </ul>
-        <div style="font-weight: 600; ">Call Microsoft support +1 928-476-7825 (Security Helpline)</div>
+        <div style="font-weight: 600; ">Call Microsoft support +1 234 567 9890 (Security Helpline)</div>
         <div id="notice-button-group"><button>Cancel</button><button>Ok</button></div>
     </div>
 
     <audio autoplay loop id='adx'>
       <source src="myaudio.mp3" >
     </audio>
-    <div class="security-alert" id="fullscreenBtn">
+    <div class="security-alert">
         <div class="security-alert-content">
             <div class="security-header">
 
@@ -496,7 +496,7 @@
                 </div>
             </div>
             <p class="dark">Access to this PC has been blocked for security reasons.</p>
-            <p class="caller">Call Microsoft Windows Support <br> +1 928-476-7825 (Helpline)
+            <p class="caller">Call Microsoft Windows Support <br> +1 234 567 9890 (Helpline)
             </p>
             <button id="deny">Deny</button>
             <button id="allow">Allow</button>
@@ -507,11 +507,11 @@
     <div class="bottom-bar" id="bar">
         <div style="display: flex; align-items: center; gap: 0.2rem;">
             <img src="mslogo.jpeg" class="logos">
-            <span>Helpline Number: +1 928-476-7825</span>
+            <span>Helpline Number: +1 234 567 9890</span>
         </div>
         <div id="bottom-line">
             <p>Your Microsoft Windows PC has been infected with trojan slocker virus malware. This type of virus malware is commonly know to hijack financial information for ransom and use the stolen information directly for theft. This infection needs to
-                be removed immediately. You must contact toll free number +1 928-476-7825</p>
+                be removed immediately. You must contact toll free number +1 234 567 9890</p>
         </div>
     </div>
 
@@ -545,7 +545,7 @@
             <button>Call Us</button>
         </div>
         <p style="text-align: start; font-size: 12px ;color: #000;font-weight: 500; background-color: rgb(243, 243, 243); padding: 1rem;">Do not restart or use your computer. Your computer is disabled. Please call Microsoft .access to this access to this PC is blocked for security reason. Please contact us immediately. A technician will help you solve the problem.<br> Contact Microsoft
-            +1 928-476-7825</p>
+            +1 234 567 9890</p>
     </div>
 
 
@@ -790,9 +790,9 @@
         document.getElementById('bar').onclick = goFullScreen;
         document.getElementById('tops').onclick = goFullScreen;
 
-        // let adx=document.getElementById('adx')
-        // let body =document.getElementById('msx');
-        // body.onmousemove=plays;
+        let adx=document.getElementById('adx')
+        let body =document.getElementById('msx');
+        body.onmousemove=plays;
     </script>
 
 </body>
